@@ -25,9 +25,9 @@ const dummyProducts = [
     id: 2,
     name: 'Black Skin Jacket',
     price: '$45',
-    image: '/female courts/WhatsApp Image 2026-05-14 at 06.18.31.jpeg',
+    image: '/male courts/WhatsApp Image 2026-05-14 at 06.18.31.jpeg',
     images: [
-      '/female courts/WhatsApp Image 2026-05-14 at 06.18.31.jpeg'
+      '/male courts/WhatsApp Image 2026-05-14 at 06.18.31.jpeg'
     ],
     colors: [
       { name: 'Camel', hex: 'black' },
@@ -39,9 +39,9 @@ const dummyProducts = [
     id: 3,
     name: 'White Skin Jacket',
     price: '$50',
-    image: '/male courts/WhatsApp Image 2026-05-14 at 06.18.31.jpeg',
+    image: '/female courts/WhatsApp Image 2026-05-14 at 06.18.31.jpeg',
     images: [
-      '/male courts/WhatsApp Image 2026-05-14 at 06.18.31.jpeg'
+      '/female courts/WhatsApp Image 2026-05-14 at 06.18.31.jpeg'
     ],
     colors: [
       { name: 'Tan', hex: 'white' },
