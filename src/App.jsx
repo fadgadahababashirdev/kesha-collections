@@ -1,23 +1,16 @@
 import React, { useState } from 'react';
 import { ShoppingBag, Search, Menu, ArrowRight, ArrowLeft } from 'lucide-react';
 import heroImg from './assets/hero.png';
-import tshirtImg from './assets/tshirt.png';
-import coatImg from './assets/coat.png';
-import bagImg from './assets/bag.png';
-
 const dummyProducts = [
-  { 
-    id: 1, 
-    name: 'OVO Graphic T-Shirt', 
-    price: '$85', 
+  {
+    id: 1,
+    name: 'OVO Graphic T-Shirt',
+    price: '$20',
     image: '/tshirts/white (1).jpeg',
     images: [
       '/tshirts/white (1).jpeg',
       '/tshirts/white (2).jpeg',
       '/tshirts/white (3).jpeg',
-      '/tshirts/red.jpeg',
-      '/tshirts/gray.jpeg',
-      '/tshirts/black.jpeg'
     ],
     colors: [
       { name: 'White', hex: '#ffffff' },
@@ -28,65 +21,33 @@ const dummyProducts = [
     sizes: ['S', 'M', 'L', 'XL'],
     description: 'Premium quality graphic t-shirt featuring the iconic owl logo. Crafted from soft cotton for a perfect drape and exceptional durability.'
   },
-  { 
-    id: 2, 
-    name: 'Minimalist Trench Coat', 
-    price: '$450', 
-    image: coatImg,
-    colors: [
-      { name: 'Camel', hex: '#c19a6b' },
-      { name: 'Navy', hex: '#1e3a8a' }
+  {
+    id: 2,
+    name: 'Black Skin Jacket',
+    price: '$45',
+    image: '/female courts/WhatsApp Image 2026-05-14 at 06.18.31.jpeg',
+    images: [
+      '/female courts/WhatsApp Image 2026-05-14 at 06.18.31.jpeg'
     ],
-    sizes: ['S', 'M', 'L'],
+    colors: [
+      { name: 'Camel', hex: 'black' },
+    ],
+    sizes: ['LG', 'XL'],
     description: 'A modern take on the classic trench. Features clean lines, hidden closures, and water-resistant technical fabric.'
   },
-  { 
-    id: 3, 
-    name: 'Luxury Leather Tote', 
-    price: '$320', 
-    image: bagImg,
+  {
+    id: 3,
+    name: 'White Skin Jacket',
+    price: '$50',
+    image: '/male courts/WhatsApp Image 2026-05-14 at 06.18.31.jpeg',
+    images: [
+      '/male courts/WhatsApp Image 2026-05-14 at 06.18.31.jpeg'
+    ],
     colors: [
-      { name: 'Tan', hex: '#d2b48c' },
-      { name: 'Black', hex: '#1a1a1a' }
+      { name: 'Tan', hex: 'white' },
     ],
     sizes: ['One Size'],
     description: 'Handcrafted from full-grain Italian leather. Spacious enough for daily essentials while maintaining a sleek silhouette.'
-  },
-  { 
-    id: 4, 
-    name: 'Cashmere Blend Sweater', 
-    price: '$280', 
-    image: coatImg,
-    colors: [
-      { name: 'Charcoal', hex: '#36454f' },
-      { name: 'Oatmeal', hex: '#e8e0d5' }
-    ],
-    sizes: ['S', 'M', 'L', 'XL'],
-    description: 'Luxuriously soft cashmere blend crewneck. Features ribbed trims and a relaxed, comfortable fit.'
-  },
-  { 
-    id: 5, 
-    name: 'Tailored Wool Trousers', 
-    price: '$210', 
-    image: tshirtImg,
-    colors: [
-      { name: 'Navy', hex: '#1e3a8a' },
-      { name: 'Grey', hex: '#808080' }
-    ],
-    sizes: ['30', '32', '34', '36'],
-    description: 'Impeccably tailored trousers crafted from lightweight tropical wool. Features a subtle taper and elegant drape.'
-  },
-  { 
-    id: 6, 
-    name: 'Leather Crossbody Mini', 
-    price: '$195', 
-    image: bagImg,
-    colors: [
-      { name: 'Black', hex: '#1a1a1a' },
-      { name: 'Forest Green', hex: '#228b22' }
-    ],
-    sizes: ['One Size'],
-    description: 'The perfect compact companion. Features signature minimalist hardware and an adjustable strap.'
   }
 ];
 
