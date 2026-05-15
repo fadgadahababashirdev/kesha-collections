@@ -48,6 +48,43 @@ const dummyProducts = [
     ],
     sizes: ['One Size'],
     description: 'Handcrafted from full-grain Italian leather. Spacious enough for daily essentials while maintaining a sleek silhouette.'
+  },
+  {
+    id: 4,
+    name: 'Jumper',
+    price: '$20',
+    image: '/jumper/black jumper.jpeg',
+    images: [
+      '/jumper/black jumper.jpeg' , 
+      '/jumper/white jumper.jpeg' ,
+      '/jumper/green jumper.jpeg' ,
+    ],
+    colors: [
+      { name: 'Black', hex: '#000000' },
+      { name: 'White', hex: '#ffffff' },
+      { name: 'Green', hex: '#008000' },
+    ],
+    sizes: ['M',"L","XL"],
+    description: 'Comfortable and stylish jumper made from high-quality fabric. Perfect for layering and everyday wear.'
+  } ,
+
+   {
+    id: 5,
+    name: 'Women leather coats',
+    price: '$32',
+    image: '/leatherWomenJackets/chocolate.jpeg',
+    images: [
+      '/leatherWomenJackets/chocolate.jpeg' , 
+      '/leatherWomenJackets/green.jpeg' ,
+      '/leatherWomenJackets/lightbrown.jpeg' ,
+    ],
+    colors: [
+      { name: 'Chocolate', hex: '#8B4513' },
+      { name: 'Green', hex: '#008000' },
+      { name: 'Light Brown', hex: '#DEB887' },
+    ],
+    sizes: ['M',"L","XL"],
+    description: 'Elegant women\'s leather coats crafted from premium leather. Timeless style with superior comfort and durability.'
   }
 ];
 
@@ -61,19 +98,19 @@ const Navbar = ({ activeSection, onNavigate, searchQuery, setSearchQuery }) => {
           <div className="flex items-center space-x-8">
             <Menu className="w-5 h-5 cursor-pointer lg:hidden" />
             <div className="hidden lg:flex space-x-8 text-sm tracking-widest uppercase">
-              <button 
+              <button
                 onClick={() => onNavigate('home')}
                 className={`transition-colors cursor-pointer pb-1 ${activeSection === 'home' ? 'text-black font-bold border-b border-black' : 'text-gray-500 hover:text-black'}`}
               >
                 Home
               </button>
-              <button 
+              <button
                 onClick={() => onNavigate('shop')}
                 className={`transition-colors cursor-pointer pb-1 ${activeSection === 'shop' || activeSection === 'product' ? 'text-black font-bold border-b border-black' : 'text-gray-500 hover:text-black'}`}
               >
                 Shop
               </button>
-              <button 
+              <button
                 onClick={() => onNavigate('about')}
                 className={`transition-colors cursor-pointer pb-1 ${activeSection === 'about' ? 'text-black font-bold border-b border-black' : 'text-gray-500 hover:text-black'}`}
               >
@@ -88,8 +125,8 @@ const Navbar = ({ activeSection, onNavigate, searchQuery, setSearchQuery }) => {
 
           <div className="flex items-center space-x-6">
             <div className="relative flex items-center">
-              <input 
-                type="text" 
+              <input
+                type="text"
                 value={searchQuery}
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
@@ -100,8 +137,8 @@ const Navbar = ({ activeSection, onNavigate, searchQuery, setSearchQuery }) => {
                 placeholder="Search..."
                 className={`absolute right-8 transition-all duration-300 ease-in-out border-b border-black bg-transparent outline-none text-sm placeholder-gray-400 ${isSearchOpen ? 'w-40 md:w-48 opacity-100 px-2 py-1' : 'w-0 opacity-0 px-0 py-0 border-transparent'}`}
               />
-              <Search 
-                className="w-5 h-5 cursor-pointer hover:text-gray-500 transition-colors" 
+              <Search
+                className="w-5 h-5 cursor-pointer hover:text-gray-500 transition-colors"
                 onClick={() => {
                   setIsSearchOpen(!isSearchOpen);
                   if (isSearchOpen) setSearchQuery('');
@@ -147,9 +184,9 @@ const Hero = ({ onExplore }) => (
 
 const FeaturedProducts = ({ onProductSelect, searchQuery, onClearSearch }) => {
   const [showAll, setShowAll] = useState(false);
-  
-  const filteredProducts = dummyProducts.filter(product => 
-    product.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+
+  const filteredProducts = dummyProducts.filter(product =>
+    product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     product.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -161,13 +198,13 @@ const FeaturedProducts = ({ onProductSelect, searchQuery, onClearSearch }) => {
         <div>
           <h2 className="font-serif text-4xl mb-4">{searchQuery ? 'Search Results' : 'Curated Selection'}</h2>
           <p className="text-gray-500 tracking-wide">
-            {searchQuery 
-              ? `Showing results for "${searchQuery}"` 
+            {searchQuery
+              ? `Showing results for "${searchQuery}"`
               : 'Timeless pieces for the modern wardrobe.'}
           </p>
         </div>
         {!searchQuery && (
-          <button 
+          <button
             onClick={() => setShowAll(!showAll)}
             className="hidden md:flex items-center space-x-2 text-sm tracking-widest uppercase border-b border-black pb-1 hover:text-gray-500 hover:border-gray-500 transition-colors cursor-pointer"
           >
@@ -180,7 +217,7 @@ const FeaturedProducts = ({ onProductSelect, searchQuery, onClearSearch }) => {
       {filteredProducts.length === 0 ? (
         <div className="text-center py-20">
           <p className="text-gray-500 mb-4 text-lg">No products found matching your search.</p>
-          <button 
+          <button
             onClick={onClearSearch}
             className="text-black border-b border-black pb-1 text-sm tracking-widest uppercase hover:text-gray-500 transition-colors cursor-pointer"
           >
@@ -198,7 +235,7 @@ const FeaturedProducts = ({ onProductSelect, searchQuery, onClearSearch }) => {
                   className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-in-out"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                  <button 
+                  <button
                     onClick={(e) => { e.stopPropagation(); onProductSelect(product); }}
                     className="bg-white text-black px-6 py-3 text-sm tracking-widest uppercase transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 cursor-pointer"
                   >
@@ -211,7 +248,7 @@ const FeaturedProducts = ({ onProductSelect, searchQuery, onClearSearch }) => {
                   <h3 className="font-serif text-lg mb-2">{product.name}</h3>
                   <div className="flex space-x-2">
                     {product.colors.map((color, index) => (
-                      <div 
+                      <div
                         key={index}
                         className="w-4 h-4 rounded-full border border-gray-300 shadow-sm"
                         style={{ backgroundColor: color.hex }}
@@ -226,10 +263,10 @@ const FeaturedProducts = ({ onProductSelect, searchQuery, onClearSearch }) => {
           ))}
         </div>
       )}
-      
+
       {!searchQuery && (
         <div className="md:hidden mt-12 flex justify-center">
-          <button 
+          <button
             onClick={() => setShowAll(!showAll)}
             className="flex items-center space-x-2 text-sm tracking-widest uppercase border-b border-black pb-1 hover:text-gray-500 hover:border-gray-500 transition-colors cursor-pointer"
           >
@@ -258,7 +295,7 @@ const SingleProductView = ({ product, onBack }) => {
 
   return (
     <div className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen bg-brand-light">
-      <button 
+      <button
         onClick={onBack}
         className="flex items-center space-x-2 text-sm tracking-widest uppercase mb-12 hover:text-gray-500 transition-colors cursor-pointer"
       >
@@ -268,48 +305,48 @@ const SingleProductView = ({ product, onBack }) => {
 
       <div className="flex flex-col md:flex-row gap-12 lg:gap-20">
         <div className="md:w-1/2 bg-gray-100 shadow-sm relative group overflow-hidden">
-          <img 
-            src={images[currentImageIndex]} 
-            alt={`${product.name} - View ${currentImageIndex + 1}`} 
+          <img
+            src={images[currentImageIndex]}
+            alt={`${product.name} - View ${currentImageIndex + 1}`}
             className="w-full h-full object-cover object-center aspect-[3/4] md:aspect-auto"
           />
           {images.length > 1 && (
             <>
-              <button 
+              <button
                 onClick={handlePrevImage}
                 className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-white cursor-pointer shadow-sm"
               >
                 <ArrowLeft className="w-5 h-5 text-black" />
               </button>
-              <button 
+              <button
                 onClick={handleNextImage}
                 className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-white cursor-pointer shadow-sm"
               >
                 <ArrowRight className="w-5 h-5 text-black" />
               </button>
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-                 {images.map((_, idx) => (
-                   <button 
-                     key={idx} 
-                     onClick={() => setCurrentImageIndex(idx)}
-                     className={`w-2 h-2 rounded-full transition-colors cursor-pointer ${idx === currentImageIndex ? 'bg-black' : 'bg-gray-400'}`} 
-                   />
-                 ))}
+                {images.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentImageIndex(idx)}
+                    className={`w-2 h-2 rounded-full transition-colors cursor-pointer ${idx === currentImageIndex ? 'bg-black' : 'bg-gray-400'}`}
+                  />
+                ))}
               </div>
             </>
           )}
         </div>
-        
+
         <div className="md:w-1/2 flex flex-col justify-center">
           <h1 className="font-serif text-4xl lg:text-5xl mb-4">{product.name}</h1>
           <p className="text-2xl mb-8 font-light">{product.price}</p>
-          
+
           <div className="w-12 h-px bg-black mb-8"></div>
-          
+
           <p className="text-gray-600 mb-10 leading-relaxed text-lg">
             {product.description}
           </p>
-          
+
           <div className="mb-10">
             <span className="text-sm tracking-widest uppercase mb-4 block">
               Color: <span className="font-bold">{selectedColor?.name}</span>
@@ -319,13 +356,12 @@ const SingleProductView = ({ product, onBack }) => {
                 <button
                   key={index}
                   onClick={() => setSelectedColor(color)}
-                  className={`w-10 h-10 rounded-full border-2 transition-all cursor-pointer ${
-                    selectedColor?.name === color.name 
-                      ? 'border-black scale-110' 
-                      : 'border-transparent hover:scale-105 hover:border-gray-300'
-                  }`}
+                  className={`w-10 h-10 rounded-full border-2 transition-all cursor-pointer ${selectedColor?.name === color.name
+                    ? 'border-black scale-110'
+                    : 'border-transparent hover:scale-105 hover:border-gray-300'
+                    }`}
                 >
-                  <div 
+                  <div
                     className="w-full h-full rounded-full border border-gray-200"
                     style={{ backgroundColor: color.hex }}
                   />
@@ -333,29 +369,28 @@ const SingleProductView = ({ product, onBack }) => {
               ))}
             </div>
           </div>
-          
+
           <div className="mb-12">
             <span className="text-sm tracking-widest uppercase mb-4 block">
               Size: <span className="font-bold">{selectedSize}</span>
             </span>
             <div className="flex flex-wrap gap-4">
               {product.sizes.map((size) => (
-                <button 
+                <button
                   key={size}
                   onClick={() => setSelectedSize(size)}
-                  className={`min-w-[3rem] h-12 px-4 border flex items-center justify-center transition-colors cursor-pointer ${
-                    selectedSize === size 
-                      ? 'border-black bg-black text-white' 
-                      : 'border-gray-300 hover:border-black'
-                  }`}
+                  className={`min-w-[3rem] h-12 px-4 border flex items-center justify-center transition-colors cursor-pointer ${selectedSize === size
+                    ? 'border-black bg-black text-white'
+                    : 'border-gray-300 hover:border-black'
+                    }`}
                 >
                   {size}
                 </button>
               ))}
             </div>
           </div>
-          
-          <a 
+
+          <a
             href={`https://wa.me/250780805598?text=Hi, I am interested in the ${product.name} (Color: ${selectedColor?.name}, Size: ${selectedSize})`}
             target="_blank"
             rel="noopener noreferrer"
@@ -476,27 +511,27 @@ function App() {
 
   return (
     <div className="min-h-screen">
-      <Navbar 
-        activeSection={activeSection} 
-        onNavigate={handleNavigate} 
+      <Navbar
+        activeSection={activeSection}
+        onNavigate={handleNavigate}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
       />
-      
+
       {activeSection === 'product' && selectedProduct ? (
         <SingleProductView product={selectedProduct} onBack={handleBackToShop} />
       ) : (
         <>
           <Hero onExplore={() => handleNavigate('shop')} />
-          <FeaturedProducts 
-            onProductSelect={handleProductSelect} 
+          <FeaturedProducts
+            onProductSelect={handleProductSelect}
             searchQuery={searchQuery}
             onClearSearch={() => setSearchQuery('')}
           />
           <BrandStory />
         </>
       )}
-      
+
       <Footer />
     </div>
   );
